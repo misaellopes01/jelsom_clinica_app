@@ -48,8 +48,10 @@ class SubscriptionsRepository implements ISubscriptionsRepository{
     }
 
     async findAllSubscription(): Promise<Subscription[]> {
-        const all = []// await this.repository.query("SELECT users.name, users.bi, subscriptions.id, subscriptions.name, subscriptions.picture, subscriptions.state FROM subscriptions, users, courses WHERE subscriptions.user_id = users.id AND subscriptions.course_id = courses.id")
-        
+        const all = await this.repository.find({
+            relations: ['user']
+        })
+
         return all
     }
 

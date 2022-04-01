@@ -26,12 +26,6 @@ class CreateSubscriptionsUseCase {
 
     async execute({ date, hour, topic, user_id, age_sick, gender_sick, name_sick }: IRequest): Promise<Subscription>{
 
-        const subscriptionExists = await this.subscriptionsRepository.findSubscriptionByUserID(user_id)
-
-        if (subscriptionExists) {
-            throw new AppError("There is already a subscription for this user")
-        }
-
         const subscription = await this.subscriptionsRepository.create({
             date,
             hour,
