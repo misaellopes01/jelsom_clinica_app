@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <title>Login | Administrador</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <h1 id="title">Iniciar sessão</h1>
+        <form action="/auth" method="POST">
+
+            <div class="txt-field first">
+                <input type="email" name="email" required>
+                <label>Email</label>
+            </div>
+            <div class="txt-field last">
+                <input type="password" required name="password">
+                <label>Password</label>
+            </div>
+
+            <div class="bottom_btn">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+
+    <a href="/">Voltar para página inical</a>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

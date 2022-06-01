@@ -11,10 +11,13 @@ const subscriptionRoutes = Router()
 
 subscriptionRoutes.post(
     "/create_subscription",
-    ensureAuthenticated,
+    // ensureAuthenticated,
     new CreateSubscriptionsController().handle
   );
 
-subscriptionRoutes.get('/all', ensureAuthenticated, ensureAdmin, new ListAllSubscriptionsController().handle)
+subscriptionRoutes.get('/call-history', 
+// ensureAuthenticated, 
+// ensureAdmin, 
+new ListAllSubscriptionsController().handle)
 
 export { subscriptionRoutes }

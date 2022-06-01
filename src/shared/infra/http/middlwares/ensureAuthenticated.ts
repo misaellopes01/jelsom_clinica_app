@@ -1,3 +1,4 @@
+import { app } from "app";
 import { NextFunction, Request, Response } from "express";
 import { verify } from 'jsonwebtoken';
 
@@ -14,13 +15,13 @@ export async function ensureAuthenticated(
   response: Response,
   next: NextFunction
 ) {
-  const authHeader = request.headers.authorization;
+  const authHeader = request.headers.cookie;
 
   if (!authHeader) {
-    throw new JWTTokenMissingError()
+    return response.redirect('user-login')
   }
 
-  const [, token] = authHeader.split(" ");
+  const [, token] = authHeader.split(":=Bearer%20");
 
   try {
     const { sub: user_id } = verify(token, "senhasupersecreta123") as IPayload;
@@ -31,6 +32,6 @@ export async function ensureAuthenticated(
 
     next();
   } catch {
-    throw new JWTInvalidTokenError()
+    response.redirect('user-login')
   }
 }

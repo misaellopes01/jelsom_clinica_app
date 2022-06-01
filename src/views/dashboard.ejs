@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Dashboard | Administrador</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/css/feathericon.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left">
+                <a class="logo" href="/">JL*<span>Clínica</span>.</a>
+            </div>
+
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+
+
+            <ul class="nav user-menu">
+
+
+
+
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="https://github.com/jelsonmita.png" width="31" alt="Seema Sisty"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img src="https://github.com/jelsonmita.png" alt="" class="avatar-img rounded-circle">
+                            </div>
+                            <div class="user-text">
+                                <h6>Jelson Mita</h6>
+                                <p class="text-muted mb-0">Administrator</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="general">Meu Perfil</a>
+                        <a class="dropdown-item" href="logout">Terminar Sessão</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                        </li>
+
+                        <li class="active">
+                            <a href="dashboard"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#"><i class="fe fe-sync"></i> <span> Marcações </span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="/call-history"> Consultas </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 col-sm-4 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+<i class="fe fe-users"></i>
+</span>
+                                    <div class="dash-count">
+                                        <a href="#" class="count-title">Total de Usuarios</a>
+                                        <a href="#" class="count">
+                                            <%= users.length %>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex">
+
+                        <div class="card card-table flex-fill">
+                            <div class="card-header">
+                                <h4 class="card-title float-start">Lista de Usuários Cadastrados</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive no-radius">
+                                    <table class="table table-hover table-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome Completo</th>
+                                                <th>Email</th>
+                                                <th class="text-center">Localização</th>
+                                                <th class="text-center">Gênero</th>
+                                                <th class="text-end">Telemovel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% users.map((user) => { %>
+                                                <tr>
+                                                    <td class="text-nowrap">
+                                                        <div class="font-weight-600">
+                                                            <%= user.name %>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        <%= user.email %>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <%= user.location %>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <%= user.gender %>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <div class="font-weight-600 text-danger">
+                                                            <%= user.phone %>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

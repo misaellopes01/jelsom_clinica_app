@@ -5,13 +5,13 @@ import { ListAllSubscriptionsUseCase } from "./ListAllSubscriptionsUseCase";
 
 class ListAllSubscriptionsController {
 
-    async handle(request: Request, response: Response): Promise<Response>{
+    async handle(request: Request, response: Response): Promise<void>{
 
         const listAllSubscriptionsUseCase = container.resolve(ListAllSubscriptionsUseCase)
 
-        const all = await listAllSubscriptionsUseCase.execute()
+        const alls = await listAllSubscriptionsUseCase.execute()
 
-        return response.status(200).json(all)
+        return response.render('call-history', {alls})
     }
 }
 

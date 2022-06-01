@@ -49,7 +49,10 @@ class SubscriptionsRepository implements ISubscriptionsRepository{
 
     async findAllSubscription(): Promise<Subscription[]> {
         const all = await this.repository.find({
-            relations: ['user']
+            relations: ['user'],
+            order:{
+                created_at: 'DESC'
+            }
         })
 
         return all

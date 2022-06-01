@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    font-family: Poppins;
+    scroll-behavior: smooth;
+}
+a {
+    text-decoration: none;
+}
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+
+.main-container{
+    width: 32%;
+    padding: 2em 0;
+    border: rgba(0, 0, 0, 0.2) 1.5px solid;
+    border-radius: 0.5em;    
+}
+
+
+.main-container form{
+    padding: 2.5em 2.5em;
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.main-container #title{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+form .txt-field{
+    width: 100%;
+    position: relative;
+    margin-bottom: 34px;
+}
+
+form .txt-field.last{
+    margin-bottom: 15px;
+}
+
+.txt-field input{
+    width: 100%;
+    resize: none;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #777;
+}
+.txt-field label{
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    pointer-events: none;
+    font-size: 18px;
+    font-weight: 300;
+    transition: 0.3s;
+}
+.txt-field input:focus ~ label, 
+.txt-field input:valid ~ label {
+    transform: translateY(-20px);
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: hsl(159 36% 57%);
+    font-weight: 500;
+}
+.txt-field label::before{
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: hsl(159 36% 57%);
+    transform: .5s;
+}
+.txt-field input:focus ~ label,
+.txt-field input:valid ~ label{
+    top: -5px;
+    color: hsl(159 36% 57%);
+}
+
+.pass_recovery{
+    color: hsl(159 36% 27%);;
+    font-weight: 500;
+    font-size: 9pt;
+    cursor: pointer;
+}
+.pass_recovery{
+    text-decoration: none;
+}
+input[type="submit"] {
+    position: relative;
+    cursor: pointer;
+    background: hsl(159 36% 57%);
+    color: #fff;
+    border: none;
+    max-width: 150px;
+    padding: 10px 24px ;
+    border-radius: 0.25em;
+}
+input[type="submit"]:hover{
+    background: hsl(159 36% 43%);
+    transition: .3s;
+}
+input[type="submit"]:disabled {
+    background: hsl(159 36% 17%);
+    color: #777;
+
+}
+
+
+.bottom_btn {
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.bottom_btn a{
+    font-weight: 500;
+    color: hsl(159 36% 57%);
+}
+
+.container1 a{
+    color: hsl(159 36% 57%);
+    font-weight: 500;
+}
+.container1 a:hover {
+    text-decoration: underline;
+    transition: 0.3s;
+}

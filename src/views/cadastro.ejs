@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href=",assets/fonts/style.css">
+    <link rel="stylesheet" href="./assets/css/pop_up_style.css">
+</head>
+
+<body id="body">
+    <header id="header">
+
+    </header>
+    <div class="main-container">
+        <h1 id="title">Criar conta</h1>
+        <form method="POST" action="/cadastro">
+            <div class="txt-field">
+                <input type="text" required name="name" autofocus maxlength="60">
+                <label>Nome</label>
+            </div>
+
+
+            <div class="txt-field">
+                <input type="email" required name="email" maxlength="40">
+                <label>Email</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="password" required name="password" maxlength="32">
+                <label>Password</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="number" id="age" required name="age" maxlength="10">
+                <label>Idade</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="text" required name="location" maxlength="30">
+                <label>Morada</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="text" required name="gender" maxlength="32">
+                <label for="gender">Genero</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="number" required name="phone" maxlength="32">
+                <label for="phone">Telemovel</label>
+            </div>
+
+            <div class="txt-field">
+                <input type="text" required name="bi" maxlength="32">
+                <label for="bi">Bilhete de Identidade</label>
+            </div>
+
+
+            <div class="container1">
+                <input type="checkbox" id="accept" required name="accept">
+                <label for="accept" id="accept-label">Eu li e aceito os <a href="#">termos de uso</a></label>
+            </div>
+
+            <div class="container1">
+                <input type="submit" disabled id="btn" value="Registar">
+            </div>
+            <div class="container1">
+                Já tem conta? <a href="user-login">Iniciar sessão</a>
+            </div>
+        </form>
+    </div>
+
+    <a href="/">Voltar para página inical</a>
+
+
+    <script src="assets/js/script.js"></script>
+    <p class="error-validation template"></p>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.container1 input[type="checkbox"]').click(function() {
+                if ($(this).prop('checked')) {
+                    $('.container1 input[type="submit"]').prop('disabled', false);
+                } else {
+                    $('.container1 input[type="submit"]').prop('disabled', true);
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

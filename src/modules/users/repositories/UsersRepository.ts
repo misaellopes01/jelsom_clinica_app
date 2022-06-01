@@ -17,6 +17,14 @@ export class UsersRepository implements IUsersRepository {
     });
   }
 
+  async findAllUsers(): Promise<User[]> {
+    return this.repository.find({
+      where: {
+        admin: false
+      }
+    });
+  }
+
   async findById(user_id: string): Promise<User | undefined> {
     return this.repository.findOne(user_id);
   }

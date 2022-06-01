@@ -6,7 +6,7 @@ import { ensureAuthenticated } from '../shared/infra/http/middlwares/ensureAuthe
 const userProfileRouter = Router();
 const showUserProfileController = new ShowUserProfileController();
 
-userProfileRouter.use(ensureAuthenticated);
+// userProfileRouter.use(ensureAuthenticated);
 
 userProfileRouter.get('/', showUserProfileController.execute);
 

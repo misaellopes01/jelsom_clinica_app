@@ -11,7 +11,7 @@ export async function ensureAdmin(request: Request, response: Response, next: Ne
     const user = await usersRepository.findById(id)
 
     if (!user.admin) {
-        throw new AppError("User is not an admin")
+        return response.redirect('admin')
     }
 
     next()

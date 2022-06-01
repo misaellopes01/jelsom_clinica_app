@@ -5,7 +5,7 @@ import { ProfileMap } from '../../mappers/ProfileMap';
 import { ShowUserProfileUseCase } from './ShowUserProfileUseCase';
 
 export class ShowUserProfileController {
-  async execute(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     const { id } = request.user;
 
     const showUserProfile = container.resolve(ShowUserProfileUseCase);
@@ -15,7 +15,8 @@ export class ShowUserProfileController {
     const profileDTO = ProfileMap.toDTO(data.user);
 
     const show = profileDTO
+    const subscription = data.subscription
 
-    return response.json([show, data.subscription]);
+    return response.render('user-profile', { show, subscription } );
   }
 }

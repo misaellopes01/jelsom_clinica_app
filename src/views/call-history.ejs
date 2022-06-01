@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>Dashboard - Historico</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="assets/css/feathericon.min.css" />
+
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left">
+                <a class="logo" href="/">JL*<span>Clínica</span>.</a>
+            </div>
+
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+
+
+            <ul class="nav user-menu">
+
+
+
+
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="https://github.com/jelsonmita.png" width="31" alt="Seema Sisty"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img src="https://github.com/jelsonmita.png" alt="" class="avatar-img rounded-circle">
+                            </div>
+                            <div class="user-text">
+                                <h6>
+                                    Jelson Mita
+                                </h6>
+                                <p class="text-muted mb-0">Administrator</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="general">Meu Perfil</a>
+                        <a class="dropdown-item" href="logout">Terminar Sessão</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                        </li>
+
+                        <li class="active">
+                            <a href="dashboard"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#"><i class="fe fe-sync"></i> <span> Marcacoes </span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a href="call-history"> Consultas </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="page-title">Historico de Consultas</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Marcacoes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex">
+
+                        <div class="card card-table flex-fill">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Usuario</th>
+                                                <th>Paciente</th>
+                                                <th>Genero</th>
+                                                <th>Idade</th>
+                                                <th>Situacao</th>
+                                                <th>Hora</th>
+                                                <th>Data</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+
+                                            <% alls.map((all) => { %>
+                                                <tr>
+                                                    <td>
+                                                        <h2 class="table-avatar">
+                                                            <a href="#" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="<%= all.user.avatar %>" alt=""></a>
+                                                            <a href="#" class="p-1">
+                                                                <%= all.user.name %>
+                                                                    <span>Genero: <%= all.user.gender %></span>
+                                                            </a>
+                                                            <a href="#"><span>Idade: <%= all.user.age %></span> <span>Phone: <%= all.user.phone %></span></a>
+                                                        </h2>
+                                                    </td>
+                                                    <td>
+                                                        <% if (!all.name_sick) { %>
+                                                            <%= all.user.name %>
+                                                                <% } %>
+                                                                    <%= all.name_sick %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (!all.gender_sick) { %>
+                                                            <%= all.user.gender %>
+                                                                <% } %>
+                                                                    <%= all.gender_sick %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (!all.age_sick) { %>
+                                                            <%= all.user.age %>
+                                                                <% } %>
+                                                                    <%= all.age_sick %>
+                                                    </td>
+                                                    <td>
+                                                        <%= all.topic %>
+                                                    </td>
+                                                    <td>
+                                                        <%= all.hour %>h
+                                                    </td>
+                                                    <td>
+                                                        <div class="actions">
+                                                            <a href="#" class="btn btn-sm bg-success-light me-2" title="View History">
+                                                                <span><%= all.date %></span>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 export class CreateUserController {
-  async execute(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     const { name, email, password, gender, location, phone, bi, age, } = request.body;
 
     const createUser = container.resolve(CreateUserUseCase);
@@ -19,6 +19,6 @@ export class CreateUserController {
       age,
     });
 
-    return response.status(201).send();
+    return response.status(201).redirect('user-login');
   }
 }

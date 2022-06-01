@@ -8,20 +8,22 @@ interface IFiles {
 
 class CreateSubscriptionsController {
 
-    async handle(request: Request ,response: Response): Promise<Response>{
+    async handle(request: Request ,response: Response): Promise<void>{
 
-        const { date,
+        const { 
+            date,
             hour,
             topic,
             age_sick,
             gender_sick,
-            name_sick } = request.body
+            name_sick 
+        } = request.body
 
         const { id: user_id } = request.user
 
         const createSubscriptionsUseCase = container.resolve(CreateSubscriptionsUseCase)
 
-        const subscription = await createSubscriptionsUseCase.execute({
+        await createSubscriptionsUseCase.execute({
             date,
             hour,
             topic,
@@ -31,7 +33,7 @@ class CreateSubscriptionsController {
             name_sick
         })
 
-        return response.status(201).json(subscription)
+        return response.status(201).redirect('user-profile')
     }
 }
 

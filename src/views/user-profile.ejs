@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Perfil</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/feathericon.min.css">
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left">
+                <a class="logo" href="/">JL*<span>Clínica</span>.</a>
+            </div>
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+
+
+            <ul class="nav user-menu">
+
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+
+                            <div class="user-text">
+                                <h6>
+                                    <%= show.name %>
+                                </h6>
+                                <p class="text-muted mb-0">Usuário</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="user-profile">Meu Perfil</a>
+                        <a class="dropdown-item" href="logout2">Logout</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="page-title">Dados Pessoais</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Pagina Inicial</a></li>
+                                <li class="breadcrumb-item active">Perfil de usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row settings-tab">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header all-center">
+                                <a href="user-profile" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="/assets/image/fake.png" alt="User Image">
+                                    <i class="fe fe-camera"></i>
+                                </a>
+                                <h6>
+                                    <%= show.name %>
+                                </h6>
+                                <p>Usuário</p>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="profile-list">
+                                    <a href="#"><i class="fe fe-mail"></i></a>
+                                    <a href="#">Email</a>
+                                    <a href="#" class="float-end">
+                                        <h5>
+                                            <%= show.email %>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div class="profile-list">
+                                    <a href="#"><i class="fe fe-phone"></i></a>
+                                    <a href="#">Telemovel</a>
+                                    <a href="#" class="float-end">
+                                        <h5>
+                                            <%= show.phone %>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div class="profile-list">
+                                    <a href="#"><i class="fe fe-camera"></i></a>
+                                    <a href="#">B.I</a>
+                                    <a href="#" class="float-end">
+                                        <h5>
+                                            <%= show.bi %>
+                                        </h5>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Informações adicionais</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <label>Idade</label>
+                                        <input disabled type="text" class="form-control" value="<%= show.age %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Gênero</label>
+                                        <input disabled type="email" class="form-control" value="<%= show.gender %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Morada</label>
+                                        <input disabled type="text" class="form-control" value="<%= show.location %>">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row settings-tab">
+                    <h4>Consultas Marcadas</h4>
+                    <div class="card card-table flex-fill">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Paciente</th>
+                                            <th>Gênero</th>
+                                            <th>Idade</th>
+                                            <th>Situação</th>
+                                            <th>Hora</th>
+                                            <th>Data da Consulta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <% subscription.map((sub) => { %>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <% if (!sub.name_sick) { %>
+                                                        Minha consulta
+                                                        <% } %>
+                                                            <%= sub.name_sick %>
+                                                </td>
+                                                <td>
+                                                    <%= sub.gender_sick %>
+                                                </td>
+                                                <td>
+                                                    <%= sub.age_sick %>
+                                                </td>
+                                                <td>
+                                                    <%= sub.topic %>
+                                                </td>
+                                                <td>
+                                                    <%= sub.hour %>
+                                                </td>
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-sm bg-warning-light me-2" title="View History">
+                                                            <span><%= sub.date %></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                            <% }) %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
