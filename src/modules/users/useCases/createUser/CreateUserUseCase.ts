@@ -14,6 +14,7 @@ export class CreateUserUseCase {
   ) {}
 
   async execute({ name, email, password, gender, location, phone, bi, age }: ICreateUserDTO) {
+   
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
